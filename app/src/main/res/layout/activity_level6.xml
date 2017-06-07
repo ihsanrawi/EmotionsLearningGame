@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_level6"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#75C9C8"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context="com.example.emotionslearninggame.Level6.Level6">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/score_TextView"
+            android:text="Score: "
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/score_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true"
+            android:text="0"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Match the facial expression with matching emotion"
+        android:textAlignment="center"
+        android:textColor="#2E382E"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/emotionView"
+        android:layout_width="140dp"
+        android:layout_height="135dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/angry_face1" />
+
+    <Button
+        android:id="@+id/choice1_Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:background="#403D39"
+        android:padding="8dp"
+        android:text="Button"
+        android:textColor="#FFF9FB" />
+
+    <Button
+        android:id="@+id/choice2_Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:background="#403D39"
+        android:padding="8dp"
+        android:text="Button"
+        android:textColor="#FFF9FB" />
+
+    <Button
+        android:id="@+id/choice3_Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:background="#403D39"
+        android:padding="8dp"
+        android:text="Button"
+        android:textColor="#FFF9FB" />
+</LinearLayout>

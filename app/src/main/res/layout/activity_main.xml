@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    tools:context="com.example.emotionslearninggame.MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/highscore_Btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="61dp"
+        android:text="EMOTIONS LEARNING GAME"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#595959"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="serif" />
+
+    <Button
+        android:id="@+id/about_Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/shape"
+        android:shadowColor="#403D39"
+        android:text="About"
+        android:textColor="#FFF9FB" />
+
+    <ImageButton
+        android:id="@+id/highscore_Btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/shape"
+        app:srcCompat="@drawable/highscore"
+        android:layout_alignTop="@+id/about_Btn"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp" />
+
+    <ImageButton
+        android:id="@+id/flashcard"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/shape"
+        app:srcCompat="@drawable/cards" />
+
+    <ImageButton
+        android:id="@+id/play_game"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/shape"
+        app:srcCompat="@drawable/play"
+        android:layout_below="@+id/flashcard"
+        android:layout_alignStart="@+id/flashcard" />
+
+    <ImageButton
+        android:id="@+id/emotion_camera"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/play_game"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/shape"
+        app:srcCompat="@drawable/camera" />
+
+    <ImageButton
+        android:id="@+id/youtube_Btn"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignEnd="@+id/about_Btn"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/shape"
+        app:srcCompat="@drawable/youtube" />
+
+</RelativeLayout>

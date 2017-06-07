@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_level4"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#08B2E3"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="com.example.emotionslearninggame.Level4.Level4Activity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/score_TextView"
+            android:text="Score: "
+            android:textColor="#3B413C"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/score_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true"
+            android:text="0"
+            android:textColor="#3B413C"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/EmojiIV"
+        android:layout_width="164dp"
+        android:layout_height="164dp"
+        android:layout_marginBottom="40dp"
+        android:padding="8dp"
+        app:srcCompat="@drawable/joy_emoji" />
+
+    <Button
+        android:id="@+id/choice1_Button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:background="#403D39"
+        android:padding="8dp"
+        android:text="SURPRISE"
+        android:textColor="#FFF9FB" />
+
+    <Button
+        android:id="@+id/choice2_Button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:background="#403D39"
+        android:padding="8dp"
+        android:text="SAD"
+        android:textColor="#FFF9FB" />
+
+    <Button
+        android:id="@+id/choice3_Button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:background="#403D39"
+        android:padding="8dp"
+        android:text="JOY"
+        android:textColor="#fff" />
+
+</LinearLayout>

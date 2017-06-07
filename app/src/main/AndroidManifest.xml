@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.emotionslearninggame">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup,android:label">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Flashcard.FlashcardActivity" />
+        <activity android:name=".Flashcard.GenderOptionActivity" />
+        <activity android:name=".Level4.Level4Activity" />
+        <activity android:name=".Level5.Level5" />
+        <activity android:name=".Level6.Level6" />
+        <activity android:name=".NextLevel" />
+        <activity android:name=".Level7.Level7" />
+        <activity android:name=".Level3.MemoryPuzzle" />
+        <activity android:name=".Camera.EmotionRecognitionActivity" />
+        <activity android:name=".About" />
+        <activity android:name=".AgeGroup" />
+        <activity android:name=".HighScore" />
+        <activity
+            android:name=".Flashcard.HowYouFeel"
+            android:label="@string/title_activity_how_you_feel"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".YoutubePlayer" />
+        <activity android:name=".YoutubeList"></activity>
+    </application>
+
+</manifest>

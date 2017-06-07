@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Emotions Learning Game V1</string>
+    <string name="title_activity_how_you_feel">HowYouFeel</string>
+    <string name="title_activity_youtube_list">YoutubeList</string>
+</resources>

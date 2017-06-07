@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_level4"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3B8EA5"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="16dp"
+    android:paddingLeft="64dp"
+    android:paddingRight="64dp"
+    android:paddingTop="16dp"
+    tools:context="com.example.emotionslearninggame.Level5.Level5">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/score_TextView"
+            android:text="Score: "
+            android:textColor="#3B413C"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/score_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true"
+            android:text="0"
+            android:textColor="#3B413C"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/question_TextView"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginBottom="40dp"
+        android:padding="8dp"
+        android:text="Mary was scolded by her mother for breaking her favourite vase. How would Mary feel?"
+        android:textAlignment="center"
+        android:textColor="#092327"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/choice1_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/angry_emoji"
+            android:paddingEnd="8dp"
+            android:paddingTop="8dp"
+            android:text="Fear"
+            android:textColor="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/choice2_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/angry_emoji"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Sad"
+            android:textColor="@android:color/transparent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/choice3_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/angry_emoji"
+            android:paddingEnd="8dp"
+            android:paddingTop="8dp"
+            android:text="Fear"
+            android:textColor="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/choice4_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/angry_emoji"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Sad"
+            android:textColor="@android:color/transparent" />
+    </LinearLayout>
+</LinearLayout>

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.TextView;
 
 import com.example.emotionslearninggame.Level3.MemoryPuzzle;
@@ -19,22 +20,25 @@ public class NextLevel extends AppCompatActivity implements View.OnClickListener
     private TextView score, textVew;
     private int crntScore;
 
-    private int level;
+    private Chronometer chronometer;
 
-    private DBHelper dbHelper;
-    SQLiteDatabase db;
+    private int level;
+    private long timer;
+    private int timeTaken;
+
+//    private DBHelper dbHelper;
+//    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_next_level);
 
-        score = (TextView)findViewById(R.id.result_TV);
+        score = (TextView)findViewById(R.id.score_TV);
         next_Level = (Button)findViewById(R.id.nextlvl_btn);
         textVew = (TextView)findViewById(R.id.textView);
 
-        dbHelper = new DBHelper(this);
-        db = dbHelper.getWritableDatabase();
+        chronometer = (Chronometer)findViewById(R.id.time_Ch);
 
         next_Level.setOnClickListener(this);
         getCrntScore();
@@ -51,6 +55,7 @@ public class NextLevel extends AppCompatActivity implements View.OnClickListener
         score.setText(String.valueOf(crntScore));
 
         level = getCrntScore.getInt("level");
+        timer = getCrntScore.getLong("timer");
     }
 
     @Override
@@ -59,15 +64,16 @@ public class NextLevel extends AppCompatActivity implements View.OnClickListener
             Intent level5 = new Intent(NextLevel.this, Level5.class);
             Bundle b = new Bundle();
             b.putInt("score", crntScore);
+            b.putLong("timer", timer);
+            System.out.println("Current Time is " + timer);
             level5.putExtras(b);
             startActivity(level5);
             finish();
-
-        }
-        else if (level == 6) {
+        }else if (level == 6) {
             Intent level7 = new Intent(NextLevel.this, Level7.class);
             Bundle b = new Bundle();
             b.putInt("score", crntScore);
+            b.putLong("timer", timer);
             level7.putExtras(b);
             startActivity(level7);
             finish();
@@ -75,14 +81,9 @@ public class NextLevel extends AppCompatActivity implements View.OnClickListener
             Intent level3 = new Intent(NextLevel.this, MemoryPuzzle.class);
             Bundle b = new Bundle();
             b.putInt("score", crntScore);
+            b.putLong("timer", timer);
             level3.putExtras(b);
             startActivity(level3);
-            finish();
-        }else if (level ==  3 || level == 5) {
-            db.execSQL("INSERT INTO highScore (score) " + "VALUES " + "('" + crntScore + "');");
-
-            Intent main = new Intent(NextLevel.this, MainActivity.class);
-            startActivity(main);
             finish();
         }
     }

@@ -4,13 +4,17 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
+import android.widget.SectionIndexer;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.emotionslearninggame.EndLevel;
 import com.example.emotionslearninggame.Level6.Questions6;
 import com.example.emotionslearninggame.NextLevel;
 import com.example.emotionslearninggame.R;
@@ -25,6 +29,10 @@ public class Level5 extends AppCompatActivity implements View.OnClickListener {
     String correctAnswer;
     int score, questionID = 0, narration, correct, getScore;
     private MediaPlayer mp;
+
+    private Chronometer chronometer;
+    private long timeWhenStopped;
+    private boolean notRunning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,18 +58,31 @@ public class Level5 extends AppCompatActivity implements View.OnClickListener {
         option3.setOnClickListener(this);
         option4.setOnClickListener(this);
 
-        Bundle getCrntScore = getIntent().getExtras();
-        getScore = getCrntScore.getInt("score");
-        score = getScore;
-        scoreTV.setText(String.valueOf(score));
         questionID = 0;
     }
 
     private void getScore() {
         Bundle getLvl4Score = getIntent().getExtras();
         int getScore = getLvl4Score.getInt("score");
+        long getTimer = getLvl4Score.getLong("timer");
         scoreTV.setText(String.valueOf(getScore));
         score = getScore;
+        timeWhenStopped = getTimer;
+
+        System.out.println("Current timer " + timeWhenStopped);
+
+        startTimer(timeWhenStopped);
+    }
+
+    private void startTimer(long time) {
+        long seconds = time;
+        System.out.println("seconds " + seconds);
+        chronometer = (Chronometer)findViewById(R.id.chronometer3);
+        chronometer.setBase(SystemClock.elapsedRealtime() + seconds);
+        chronometer.start();
+        System.out.println("Base " + chronometer.getBase());
+        notRunning = false;
+        System.out.println(notRunning);
     }
 
     private void updateQuestion() {
@@ -126,17 +147,29 @@ public class Level5 extends AppCompatActivity implements View.OnClickListener {
                     option2.setEnabled(true);
                     option3.setEnabled(true);
                 }else {
-                    // if over 6 do this
-                    Intent intent = new Intent(Level5.this,NextLevel.class);
+                    Intent intent = new Intent(Level5.this, EndLevel.class);
                     Bundle a = new Bundle();
                     a.putInt("score", score);
-                    a.putInt("level", 5);
+                    a.putInt("timer", stopTimer(timeWhenStopped));
                     intent.putExtras(a);
                     startActivity(intent);
                     finish();
                 }
             }
         }, 500);
+    }
+
+    private int stopTimer(long timeTaken) {
+        int seconds = 0;
+        if (!notRunning) {
+            timeTaken = chronometer.getBase() - SystemClock.elapsedRealtime();
+            seconds = (int) timeTaken / 1000;
+            chronometer.stop();
+            notRunning =true;
+            System.out.println(notRunning);
+        }
+        return Math.abs(seconds);
+//        return timeTaken;
     }
 
     @Override

@@ -38,7 +38,8 @@
             android:label="@string/title_activity_how_you_feel"
             android:theme="@style/AppTheme" />
         <activity android:name=".YoutubePlayer" />
-        <activity android:name=".YoutubeList"></activity>
+        <activity android:name=".YoutubeList" />
+        <activity android:name=".EndLevel"></activity>
     </application>
 
 </manifest>

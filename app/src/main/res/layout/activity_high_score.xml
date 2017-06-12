@@ -10,26 +10,27 @@
         android:id="@+id/highScore_TV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
+        android:layout_marginTop="40dp"
         android:padding="10dp"
         android:textColor="#30343F"
-        android:textSize="24sp"
-        android:layout_marginTop="40dp"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_centerHorizontal="true" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginTop="24dp"
         android:text="High Score"
         android:textAlignment="center"
         android:textColor="#252422"
-        android:textSize="30sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textSize="30sp" />
+
 </RelativeLayout>

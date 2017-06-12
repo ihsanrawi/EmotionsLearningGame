@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +27,10 @@ public class Level6 extends AppCompatActivity implements View.OnClickListener {
     private String answer;
     private MediaPlayer mp;
     Questions6 questionsLib = new Questions6();
+
+    private Chronometer chronometer;
+    private long timeTaken = 0;
+    private boolean running;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,16 @@ public class Level6 extends AppCompatActivity implements View.OnClickListener {
         choice1.setOnClickListener(this);
         choice2.setOnClickListener(this);
         choice3.setOnClickListener(this);
+
+        chronometer = (Chronometer)findViewById(R.id.time_Ch);
+        startTimer(timeTaken);
+    }
+
+    private void startTimer(long elapsedTime) {
+        chronometer.setBase(SystemClock.elapsedRealtime() + elapsedTime);
+        chronometer.start();
+        running = false;
+        System.out.println(running);
     }
 
     private void setQuestion() {
@@ -152,12 +168,25 @@ public class Level6 extends AppCompatActivity implements View.OnClickListener {
                     Bundle a = new Bundle();
                     a.putInt("score", score);
                     a.putInt("level", 6);
+                    a.putLong("timer", stopTimer(timeTaken));
                     intent.putExtras(a);
                     startActivity(intent);
                     finish();
                 }
             }
         },500);
+    }
+
+    private long stopTimer(long timeTaken) {
+        int seconds = 0;
+        if (!running) {
+            timeTaken = chronometer.getBase() - SystemClock.elapsedRealtime();
+            seconds = (int) timeTaken / 1000;
+            chronometer.stop();
+            running =true;
+            System.out.println(running);
+        }
+        return timeTaken;
     }
 
     private void sound(int i) {

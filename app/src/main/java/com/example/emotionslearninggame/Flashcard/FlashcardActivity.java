@@ -24,7 +24,6 @@ public class FlashcardActivity extends AppCompatActivity implements View.OnClick
     ImageView flashcard;
     ImageButton prev, next, home, feel;
     TextView cardDesc;
-    Toolbar toolbar;
 
     private int[] cardSource, cardSource1;
     private String[] cardText, sound;

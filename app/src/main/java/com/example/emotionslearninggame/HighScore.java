@@ -12,6 +12,11 @@ public class HighScore extends AppCompatActivity {
     SQLiteDatabase db;
     TextView tv;
 
+    private static final String DATABASE_NAME = "score";
+    private static final String KEY_ID = "id";
+    private static final String KEY_SCORE = "score";
+    private static final String KEY_TIME = "time";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,15 +32,18 @@ public class HighScore extends AppCompatActivity {
 
     private void highScore() {
         StringBuilder sb = new StringBuilder();
-        Cursor c = db.query("highScore", new String[] {"id", "score"}, null, null, null, null, null);
+        String[] scoreTable = new String[] {KEY_ID, KEY_SCORE, KEY_TIME};
+        Cursor c = db.query(DATABASE_NAME, scoreTable, null, null, null, null, KEY_SCORE + " DESC");
 
         if (c.moveToFirst()) {
+            int count = 1;
             do {
-                int id = c.getInt(0);
                 String score = c.getString(1);
+                String timer = c.getString(2);
 
-                sb.append("" + id + ": " + score);
-                sb.append("\n");
+                sb.append(count + " :\t " + score + "\t " + timer + " s");
+                    sb.append("\n");
+                ++count;
             }while (c.moveToNext());
         }
         tv.setText(sb.toString());

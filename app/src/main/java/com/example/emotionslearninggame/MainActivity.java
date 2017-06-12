@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -30,9 +32,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         highscore = (ImageButton)findViewById(R.id.highscore_Btn);
         youtube = (ImageButton)findViewById(R.id.youtube_Btn);
 
-//        final TextView welcomeText = (TextView)findViewById(R.id.textView);
-//        welcomeText.setAnimation(new RotateAnimation(0, 360, 50, 30));
-
         flashcard.setOnClickListener(this);
         play.setOnClickListener(this);
         recognition.setOnClickListener(this);
@@ -48,12 +47,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent flashcardIntent = new Intent(this, GenderOptionActivity.class);
                 startActivity(flashcardIntent);
                 break;
-
             case (R.id.play_game) :
                 Intent game = new Intent(this, AgeGroup.class);
                 startActivity(game);
                 break;
-
             case (R.id.emotion_camera) :
                 Intent emotionRecognitionIntent = new Intent(this, EmotionRecognitionActivity.class);
                 startActivity(emotionRecognitionIntent);
@@ -65,10 +62,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case (R.id.highscore_Btn) :
                 Intent scoreIntent = new Intent(this, HighScore.class);
                 startActivity(scoreIntent);
-
+                break;
             case (R.id.youtube_Btn) :
                 Intent youtube = new Intent(this, YoutubeList.class);
                 startActivity(youtube);
+                break;
         }
     }
 }

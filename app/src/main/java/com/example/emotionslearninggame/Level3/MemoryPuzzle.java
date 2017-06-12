@@ -3,13 +3,16 @@ package com.example.emotionslearninggame.Level3;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
+import com.example.emotionslearninggame.EndLevel;
 import com.example.emotionslearninggame.NextLevel;
 import com.example.emotionslearninggame.R;
 
@@ -26,6 +29,10 @@ public class MemoryPuzzle extends AppCompatActivity implements View.OnClickListe
 
     private Tiles firstTiles, secondTiles;
     private boolean isProcess = false;
+
+    private Chronometer chronometer;
+    private long timeWhenStopped;
+    private boolean notRunning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +66,17 @@ public class MemoryPuzzle extends AppCompatActivity implements View.OnClickListe
         images[3] = R.drawable.surprise_emoji;
         images[4] = R.drawable.fear_emoji;
         images[5] = R.drawable.disgust_emoji;
+    }
+
+    private void startTimer(long time) {
+        long seconds = time;
+        System.out.println("seconds " + seconds);
+        chronometer = (Chronometer)findViewById(R.id.time_Ch);
+        chronometer.setBase(SystemClock.elapsedRealtime() + seconds);
+        chronometer.start();
+        System.out.println("Base " + chronometer.getBase());
+        notRunning = false;
+        System.out.println(notRunning);
     }
 
     //This method is used to randomize the position of the cards
@@ -97,9 +115,12 @@ public class MemoryPuzzle extends AppCompatActivity implements View.OnClickListe
         }
         /*get score from the previous levels*/
         Bundle getCrntScore = getIntent().getExtras();
+        long getTimer = getCrntScore.getLong("timer");
         getScore = getCrntScore.getInt("score");
         score = getScore;
         score_TextView.setText(String.valueOf(score));
+        timeWhenStopped = getTimer;
+        startTimer(timeWhenStopped);
     }
 
     @Override
@@ -136,7 +157,6 @@ public class MemoryPuzzle extends AppCompatActivity implements View.OnClickListe
             finalScore(pairsMatched);
             firstTiles = null;
             score_TextView.setText(String.valueOf(score));
-            return;
         }else {
             //If the pair is not matched, the card is flipped back
             // and no open tiles is shown.
@@ -169,14 +189,26 @@ public class MemoryPuzzle extends AppCompatActivity implements View.OnClickListe
 
     private void finalScore(int i) {
         if (i == 6){
-            Intent intent = new Intent(MemoryPuzzle.this, NextLevel.class);
+            Intent intent = new Intent(MemoryPuzzle.this, EndLevel.class);
             Bundle a = new Bundle();
             a.putInt("score", score);
-            a.putInt("level", 3);
+            a.putInt("timer", stopTimer(timeWhenStopped));
             intent.putExtras(a);
             startActivity(intent);
             finish();
         }
+    }
+
+    private int stopTimer(long timeTaken) {
+        int seconds = 0;
+        if (!notRunning) {
+            timeTaken = chronometer.getBase() - SystemClock.elapsedRealtime();
+            seconds = (int) timeTaken / 1000;
+            chronometer.stop();
+            notRunning =true;
+            System.out.println(notRunning);
+        }
+        return Math.abs(seconds);
     }
 }
 

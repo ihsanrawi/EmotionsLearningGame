@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +30,9 @@ public class Level4Activity extends AppCompatActivity implements View.OnClickLis
     private int score = 0, questionID = 0, correct;
     private MediaPlayer mp;
 
+    private Chronometer chronometer;
+    private long timeTaken = 0;
+    private boolean notRunning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,16 @@ public class Level4Activity extends AppCompatActivity implements View.OnClickLis
         choice1.setOnClickListener(this);
         choice2.setOnClickListener(this);
         choice3.setOnClickListener(this);
+
+        chronometer = (Chronometer)findViewById(R.id.time_Ch);
+        startTimer(timeTaken);
+    }
+
+    private void startTimer(long elapsedTime) {
+        chronometer.setBase(SystemClock.elapsedRealtime() + elapsedTime);
+        chronometer.start();
+        notRunning = false;
+        System.out.println(notRunning);
     }
 
     @Override
@@ -196,12 +211,26 @@ public class Level4Activity extends AppCompatActivity implements View.OnClickLis
                     Bundle a = new Bundle();
                     a.putInt("score", score);
                     a.putInt("level", 4);
+                    a.putLong("timer", stopTimer(timeTaken));
                     intent.putExtras(a);
                     startActivity(intent);
                     finish();
                 }
             }
         }, 500);
+    }
+
+    private long stopTimer(long timeTaken) {
+        int seconds = 0;
+        if (!notRunning) {
+            timeTaken = chronometer.getBase() - SystemClock.elapsedRealtime();
+            seconds = (int) timeTaken / 1000;
+            chronometer.stop();
+            notRunning =true;
+            System.out.println(notRunning);
+        }
+//        return Math.abs(seconds);
+        return timeTaken;
     }
 
     private void updateScore(int i) {

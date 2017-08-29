@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class YoutubeList extends AppCompatActivity {
+public class YoutubeList extends MainActivity {
     private ListView listView;
 
     private int i;

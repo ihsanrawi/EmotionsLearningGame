@@ -14,13 +14,17 @@ import android.widget.SectionIndexer;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.emotionslearninggame.Database.CapturedEmotion;
+import com.example.emotionslearninggame.Database.SQLiteDatabaseHandler;
+import com.example.emotionslearninggame.DetectorService;
 import com.example.emotionslearninggame.EndLevel;
 import com.example.emotionslearninggame.Level6.Questions6;
+import com.example.emotionslearninggame.MainActivity;
 import com.example.emotionslearninggame.NextLevel;
 import com.example.emotionslearninggame.R;
 
 
-public class Level5 extends AppCompatActivity implements View.OnClickListener {
+public class Level5 extends MainActivity implements View.OnClickListener {
     Questions5 questionsLibrary = new Questions5();
     Questions6 questions6 = new Questions6();
     TextView scoreTV, questionTV;
@@ -34,6 +38,8 @@ public class Level5 extends AppCompatActivity implements View.OnClickListener {
     private long timeWhenStopped;
     private boolean notRunning;
 
+    private SQLiteDatabaseHandler db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +48,8 @@ public class Level5 extends AppCompatActivity implements View.OnClickListener {
         initialSetup();
         getScore();
         updateQuestion();
+
+        db = new SQLiteDatabaseHandler(this);
     }
 
     private void initialSetup() {
@@ -183,6 +191,10 @@ public class Level5 extends AppCompatActivity implements View.OnClickListener {
 
                     score = score + 10;
                     updateScore(score);
+                    CapturedEmotion e = new CapturedEmotion("Q_5To6_B(8)", score , DetectorService.getanger(),
+                            DetectorService.getsurprise(), DetectorService.getjoy(), DetectorService.getsad(),
+                            DetectorService.getdisgust(), DetectorService.getfear() );
+                    db.addCapturedEmotion(e);
                     nextQuestion(questionID);
                 }else {
                     correct = 0;
@@ -196,6 +208,10 @@ public class Level5 extends AppCompatActivity implements View.OnClickListener {
                         score = 0;
                     }
                     updateScore(score);
+                    CapturedEmotion e = new CapturedEmotion("Q_5To6_B(8)", score , DetectorService.getanger(),
+                            DetectorService.getsurprise(), DetectorService.getjoy(), DetectorService.getsad(),
+                            DetectorService.getdisgust(), DetectorService.getfear() );
+                    db.addCapturedEmotion(e);
                     nextQuestion(questionID);
                 }
                 break;
@@ -207,6 +223,10 @@ public class Level5 extends AppCompatActivity implements View.OnClickListener {
 
                     score = score + 10;
                     updateScore(score);
+                    CapturedEmotion e = new CapturedEmotion("Q_5To6_B(8)", score , DetectorService.getanger(),
+                            DetectorService.getsurprise(), DetectorService.getjoy(), DetectorService.getsad(),
+                            DetectorService.getdisgust(), DetectorService.getfear() );
+                    db.addCapturedEmotion(e);
                     nextQuestion(questionID);
                 }else {
                     correct = 0;
@@ -220,6 +240,10 @@ public class Level5 extends AppCompatActivity implements View.OnClickListener {
                         score = 0;
                     }
                     updateScore(score);
+                    CapturedEmotion e = new CapturedEmotion("Q_5To6_B(8)", score , DetectorService.getanger(),
+                            DetectorService.getsurprise(), DetectorService.getjoy(), DetectorService.getsad(),
+                            DetectorService.getdisgust(), DetectorService.getfear() );
+                    db.addCapturedEmotion(e);
                     nextQuestion(questionID);
                 }
                 break;
@@ -231,6 +255,10 @@ public class Level5 extends AppCompatActivity implements View.OnClickListener {
 
                     score = score + 10;
                     updateScore(score);
+                    CapturedEmotion e = new CapturedEmotion("Q_5To6_B(8)", score , DetectorService.getanger(),
+                            DetectorService.getsurprise(), DetectorService.getjoy(), DetectorService.getsad(),
+                            DetectorService.getdisgust(), DetectorService.getfear() );
+                    db.addCapturedEmotion(e);
                     nextQuestion(questionID);
                 }else {
                     correct = 0;
@@ -244,6 +272,10 @@ public class Level5 extends AppCompatActivity implements View.OnClickListener {
                         score = 0;
                     }
                     updateScore(score);
+                    CapturedEmotion e = new CapturedEmotion("Q_5To6_B(8)", score , DetectorService.getanger(),
+                            DetectorService.getsurprise(), DetectorService.getjoy(), DetectorService.getsad(),
+                            DetectorService.getdisgust(), DetectorService.getfear() );
+                    db.addCapturedEmotion(e);
                     nextQuestion(questionID);
                 }
                 break;
@@ -255,6 +287,10 @@ public class Level5 extends AppCompatActivity implements View.OnClickListener {
 
                     score = score + 10;
                     updateScore(score);
+                    CapturedEmotion e = new CapturedEmotion("Q_5To6_B(8)", score , DetectorService.getanger(),
+                            DetectorService.getsurprise(), DetectorService.getjoy(), DetectorService.getsad(),
+                            DetectorService.getdisgust(), DetectorService.getfear() );
+                    db.addCapturedEmotion(e);
                     nextQuestion(questionID);
                 }else {
                     correct = 0;
@@ -268,6 +304,10 @@ public class Level5 extends AppCompatActivity implements View.OnClickListener {
                         score = 0;
                     }
                     updateScore(score);
+                    CapturedEmotion e = new CapturedEmotion("Q_5To6_B(8)", score , DetectorService.getanger(),
+                            DetectorService.getsurprise(), DetectorService.getjoy(), DetectorService.getsad(),
+                            DetectorService.getdisgust(), DetectorService.getfear() );
+                    db.addCapturedEmotion(e);
                     nextQuestion(questionID);
                 }
                 break;

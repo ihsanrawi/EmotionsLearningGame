@@ -12,7 +12,7 @@ import com.example.emotionslearninggame.Flashcard.HowYouFeel;
 
 import static com.example.emotionslearninggame.R.id.toolbar;
 
-public class EndLevel extends AppCompatActivity {
+public class EndLevel extends MainActivity {
     private Toolbar toolbar;
     private TextView finalScore, finalTimer;
     private int score,timer;

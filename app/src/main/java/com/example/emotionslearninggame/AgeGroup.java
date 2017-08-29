@@ -10,7 +10,7 @@ import com.example.emotionslearninggame.Level4.Level4Activity;
 import com.example.emotionslearninggame.Level6.Level6;
 
 
-public class AgeGroup extends AppCompatActivity implements View.OnClickListener {
+public class AgeGroup extends MainActivity implements View.OnClickListener {
 
     Button ageBelow7, ageAbove7;
 

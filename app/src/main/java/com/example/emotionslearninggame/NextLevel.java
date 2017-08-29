@@ -14,7 +14,7 @@ import com.example.emotionslearninggame.Level5.Level5;
 import com.example.emotionslearninggame.Level7.Level7;
 
 
-public class NextLevel extends AppCompatActivity implements View.OnClickListener {
+public class NextLevel extends MainActivity implements View.OnClickListener {
 
     private Button next_Level;
     private TextView score, textVew;

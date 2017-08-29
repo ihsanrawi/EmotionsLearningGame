@@ -14,11 +14,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.emotionslearninggame.Database.CapturedEmotion;
+import com.example.emotionslearninggame.Database.SQLiteDatabaseHandler;
+import com.example.emotionslearninggame.DetectorService;
 import com.example.emotionslearninggame.Level6.Questions6;
+import com.example.emotionslearninggame.MainActivity;
 import com.example.emotionslearninggame.NextLevel;
 import com.example.emotionslearninggame.R;
 
-public class Level7 extends AppCompatActivity implements View.OnClickListener {
+public class Level7 extends MainActivity implements View.OnClickListener {
 
     Questions7 questions = new Questions7();
     Questions6 questionsLib = new Questions6();
@@ -35,6 +39,8 @@ public class Level7 extends AppCompatActivity implements View.OnClickListener {
     private long timeWhenStopped;
     private boolean running;
 
+    private SQLiteDatabaseHandler db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,8 @@ public class Level7 extends AppCompatActivity implements View.OnClickListener {
         initialize();
         getScore();
         getQuestions();
+
+        db = new SQLiteDatabaseHandler(this);
     }
 
     private void initialize() {
@@ -103,6 +111,10 @@ public class Level7 extends AppCompatActivity implements View.OnClickListener {
                     score = score + 10;
                     Toast.makeText(this, "The answer is correct!", Toast.LENGTH_SHORT).show();
                     updateScore(score);
+                    CapturedEmotion e = new CapturedEmotion("Q_7To9_B(5)", score , DetectorService.getanger(),
+                            DetectorService.getsurprise(), DetectorService.getjoy(), DetectorService.getsad(),
+                            DetectorService.getdisgust(), DetectorService.getfear() );
+                    db.addCapturedEmotion(e);
                     nextQuestion(counter);
                 }else {
                     correct = 0;
@@ -115,6 +127,10 @@ public class Level7 extends AppCompatActivity implements View.OnClickListener {
                         score = 0;
                     }
                     updateScore(score);
+                    CapturedEmotion e = new CapturedEmotion("Q_7To9_B(5)", score , DetectorService.getanger(),
+                            DetectorService.getsurprise(), DetectorService.getjoy(), DetectorService.getsad(),
+                            DetectorService.getdisgust(), DetectorService.getfear() );
+                    db.addCapturedEmotion(e);
                     nextQuestion(counter);
                 }
                 break;
@@ -125,6 +141,10 @@ public class Level7 extends AppCompatActivity implements View.OnClickListener {
                     score = score + 10;
                     Toast.makeText(this, "The answer is correct!", Toast.LENGTH_SHORT).show();
                     updateScore(score);
+                    CapturedEmotion e = new CapturedEmotion("Q_7To9_B(5)", score , DetectorService.getanger(),
+                            DetectorService.getsurprise(), DetectorService.getjoy(), DetectorService.getsad(),
+                            DetectorService.getdisgust(), DetectorService.getfear() );
+                    db.addCapturedEmotion(e);
                     nextQuestion(counter);
                 }else {
                     correct = 0;
@@ -137,6 +157,10 @@ public class Level7 extends AppCompatActivity implements View.OnClickListener {
                         score = 0;
                     }
                     updateScore(score);
+                    CapturedEmotion e = new CapturedEmotion("Q_7To9_B(5)", score , DetectorService.getanger(),
+                            DetectorService.getsurprise(), DetectorService.getjoy(), DetectorService.getsad(),
+                            DetectorService.getdisgust(), DetectorService.getfear() );
+                    db.addCapturedEmotion(e);
                     nextQuestion(counter);
                 }
                 break;
@@ -147,6 +171,10 @@ public class Level7 extends AppCompatActivity implements View.OnClickListener {
                     score = score + 10;
                     Toast.makeText(this, "The answer is correct!", Toast.LENGTH_SHORT).show();
                     updateScore(score);
+                    CapturedEmotion e = new CapturedEmotion("Q_7To9_B(5)", score , DetectorService.getanger(),
+                            DetectorService.getsurprise(), DetectorService.getjoy(), DetectorService.getsad(),
+                            DetectorService.getdisgust(), DetectorService.getfear() );
+                    db.addCapturedEmotion(e);
                     nextQuestion(counter);
                 }else {
                     correct = 0;
@@ -159,6 +187,10 @@ public class Level7 extends AppCompatActivity implements View.OnClickListener {
                         score = 0;
                     }
                     updateScore(score);
+                    CapturedEmotion e = new CapturedEmotion("Q_7To9_B(5)", score , DetectorService.getanger(),
+                            DetectorService.getsurprise(), DetectorService.getjoy(), DetectorService.getsad(),
+                            DetectorService.getdisgust(), DetectorService.getfear() );
+                    db.addCapturedEmotion(e);
                     nextQuestion(counter);
                 }
                 break;

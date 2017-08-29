@@ -1,25 +1,30 @@
 package com.example.emotionslearninggame;
 
+import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.emotionslearninggame.Camera.EmotionRecognitionActivity;
+import com.example.emotionslearninggame.Database.SecondActivity;
 import com.example.emotionslearninggame.Flashcard.GenderOptionActivity;
-import com.example.emotionslearninggame.Flashcard.HowYouFeel;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton flashcard, play, recognition, highscore, youtube;
     Button about;
 
+    private final static int CAMERA_PERMISSIONS_REQUEST_CODE = 0;
+    private final static String[] CAMERA_PERMISSIONS_REQUEST = new String[]{Manifest.permission.CAMERA};
+    private boolean handleCameraPermissionGrant;
+
+    @SuppressWarnings("ConstantConditions")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +43,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         about.setOnClickListener(this);
         highscore.setOnClickListener(this);
         youtube.setOnClickListener(this);
+
+        // on Marshmallow+, we have to ask for the camera permission the first time
+        if (!CameraHelper.checkPermission(this) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(CAMERA_PERMISSIONS_REQUEST, CAMERA_PERMISSIONS_REQUEST_CODE);
+        }
+
+        // hook up a click handler for the "2nd activity" button
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+            }
+        });
     }
 
     @Override
@@ -68,5 +86,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(youtube);
                 break;
         }
+    }
+
+
+
+    @SuppressWarnings("ConstantConditions")
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (handleCameraPermissionGrant) {
+            // a response to our camera permission request was received
+            if (CameraHelper.checkPermission(this)) {
+                startService(new Intent(this, DetectorService.class));
+            } else {
+                ((TextView)findViewById(R.id.text)).setText(R.string.camera_permission_denied);
+                findViewById(R.id.button).setVisibility(View.INVISIBLE);
+            }
+            handleCameraPermissionGrant = false;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CAMERA_PERMISSIONS_REQUEST_CODE) {
+            for (String permission : permissions) {
+                if (permission.equals(Manifest.permission.CAMERA)) {
+                    // next time through onResume, handle the grant result
+                    handleCameraPermissionGrant = true;
+                    break;
+                }
+            }
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ((DemoApplication)getApplication()).onActivityStarted();
+    }
+    @Override
+
+    protected void onStop() {
+        super.onStop();
+        ((DemoApplication)getApplication()).onActivityStopped();
     }
 }

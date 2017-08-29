@@ -21,7 +21,7 @@ import com.example.emotionslearninggame.R;
 
 import java.util.List;
 
-public class EmotionRecognitionActivity extends AppCompatActivity implements Detector.ImageListener, CameraDetector.CameraEventListener {
+public class EmotionRecognitionActivity extends MainActivity implements Detector.ImageListener, CameraDetector.CameraEventListener {
     final String LOG_TAG = "EmotionRecognition";
 
     TextView joyTV, sadTV, angerTV, surpriseTV, disgutstTV, fearTV;
